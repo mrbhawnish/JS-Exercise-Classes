@@ -1,7 +1,7 @@
 # The _class_ Syntax
 
 This challenge focuses on using the new for ES6 `class` syntax.
-
+[![Run on Repl.it](https://repl.it/badge/github/mrbhawnish/JS-Exercise-Classes)](https://repl.it/github/mrbhawnish/JS-Exercise-Classes)
 ##### Index
 
 * [Instructions](#instructions)
