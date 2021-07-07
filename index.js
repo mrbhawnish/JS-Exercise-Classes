@@ -6,7 +6,7 @@
         + If a plane takes off, its `isFlying` property gets set to true.
         + If a plane lands, its `isFlying` property gets set to false.
 */
-
+// Project started
 // EXAMPLE SOLUTION CODE:
 class Airplane {
   constructor(name) {
@@ -41,7 +41,24 @@ class Airplane {
 */
 
 class Person {
+  constructor(name, age){
+     this.name = name;
+     this.age = age;
+     this.stomach = []
+  }
+    eat(edible) {
+     if(this.stomach.length < 10){
+       return this.stomach.push(edible)
+     }
+    } 
 
+    poop(){
+      return  this.stomach = [];
+    }
+
+    toString() {
+      return (`${this.name}, ${this.age}`)
+    }
 }
 
 /*
@@ -59,8 +76,30 @@ class Person {
 */
 
 class Car {
+  constructor(model, milesPerGallon){
+    this.tank = 0;
+    this.odometer = 0;
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+  }
+  
+  fill(gallons){
+    return this.tank += gallons;
+  }
 
+  drive(distance){
+    const distancePerMile = this.tank * this.milesPerGallon;
+  if (distance <= 0) {
+    this.odometer += distance;
+    this.tank -= 1 / this.milesPerGallon;
+  }
+     this.odometer += distancePerMile;
+     this.tank = 0;
+     return (`I ran out of fuel at ${this.odometer} miles!`)
+ }
 }
+
+
 
 /*
   TASK 3
@@ -74,8 +113,16 @@ class Car {
         + Speaking should return a phrase `Hello my name is {name}, I am from {location}`.
         + {name} and {location} of course come from the instance's own properties.
 */
-class Lambdasian {
 
+class Lambdasian {
+  constructor(parObj){
+   this.name = parObj.name;
+   this.age = parObj.age;
+   this.location = parObj.location;
+  }
+   speak(){
+     return (`Hello my name is ${name}, I am from ${location}`)
+   }
 }
 
 /*
@@ -92,10 +139,27 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
+class Instructor extends Lambdasian {
+  constructor(childObj) {
+    super(childObj);
+    this.speciality = childObj.speciality;
+    this.favLanguage = childObj.favLanguage;
+    this.catchPhrase = childObj.catchPhrase;
+  }
+  demo(subject){
+     return (`Today we are learning about ${subject}`)
+  }
+
+  grade(student, subject){
+     return (`${student.name} receives a perfect score on ${subject}`) 
+
+  }
 
 }
 
+const newInstruct = new Instructor({name: "Bhawnish", age: 20, location:"San Diego", speciality: "Redux", favLanguage: "JS", catchPhrase: `Dont forget the homies`})
+
+console.log(newInstruct)
 /*
   TASK 5
     - Write a Student class extending Lambdasian.
@@ -111,10 +175,27 @@ class Instructor {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
 
+class Student extends Lambdasian {
+  constructor(childAttrs, parentObj){
+    super(childAttrs);
+    this.previousBackground = childAttrs.previousBackground;
+    this.className = childAttrs.className;
+    this.favSubjects = childAttrs.favSubjects;
+  }
+  listSubjects (){
+    return (`Loving ${this.favSubjects} !`)
+  }
+  PRAssignment (subject){
+    return (`student.name has submitted a PR for' {subject}`)
+  }
+  sprintChallenge (subject) {
+    return (`student.name has begun sprint challenge on {subject}`)
+  }
 }
 
+const newStudent = new Student({previousBackground: "Worker", className: "CS132", favSubjects: ["HTML", "CSS", "JS"]})
+console.log(newStudent)
 /*
   TASK 6
     - Write a ProjectManager class extending Instructor.
@@ -128,7 +209,9 @@ class Student {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
+
 class ProjectManager {
+
 
 }
 
@@ -144,6 +227,7 @@ class ProjectManager {
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
+/*
 if (typeof exports !== 'undefined') {
   module.exports = module.exports || {}
   if (Airplane) { module.exports.Airplane = Airplane }
@@ -154,3 +238,4 @@ if (typeof exports !== 'undefined') {
   if (Student) { module.exports.Student = Student }
   if (ProjectManager) { module.exports.ProjectManager = ProjectManager }
 }
+*/
